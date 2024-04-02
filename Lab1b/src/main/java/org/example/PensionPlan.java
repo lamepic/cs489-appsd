@@ -39,10 +39,14 @@ public class PensionPlan {
 
     @Override
     public String toString() {
-        return "PensionPlan{" +
+        return "{" +
                 "planReferenceNumber='" + planReferenceNumber + '\'' +
                 ", enrollmentDate=" + enrollmentDate +
                 ", monthlyContributions=" + monthlyContributions +
                 '}';
+    }
+
+    public String toJson(){
+        return String.format("{ \"planReferenceNumber\":%s, \"enrollmentDate\":%s, \"monthlyContributions\":%.2f }", this.planReferenceNumber, this.enrollmentDate, this.monthlyContributions);
     }
 }
