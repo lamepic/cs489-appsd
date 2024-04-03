@@ -71,18 +71,6 @@ public class Employee {
         this.yearlySalary = yearlySalary;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "employeeId=" + employeeId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", employmentDate=" + employmentDate +
-                ", yearlySalary=" + yearlySalary +
-                ", pensionPlan=" + pensionPlan +
-                '}';
-    }
-
     public String toJson(){
         var pension = this.getPensionPlan() == null ? null : this.getPensionPlan().toJson();
         return String.format("{ \"employeeId\":%s, \"firstName\":%s, \"lastName\":%s, \"employmentDate\":%s, \"yearlySalary\":%f, \"pensionPlan\":%s }", this.employeeId, this.firstName, this.lastName, this.employmentDate, this.yearlySalary, pension);

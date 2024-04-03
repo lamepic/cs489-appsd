@@ -37,15 +37,6 @@ public class PensionPlan {
         this.monthlyContributions = monthlyContributions;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "planReferenceNumber='" + planReferenceNumber + '\'' +
-                ", enrollmentDate=" + enrollmentDate +
-                ", monthlyContributions=" + monthlyContributions +
-                '}';
-    }
-
     public String toJson(){
         return String.format("{ \"planReferenceNumber\":%s, \"enrollmentDate\":%s, \"monthlyContributions\":%.2f }", this.planReferenceNumber, this.enrollmentDate, this.monthlyContributions);
     }

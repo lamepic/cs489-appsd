@@ -1,7 +1,6 @@
 package edu.miu.cs;
 
 import edu.miu.cs.module.Product;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -22,7 +21,7 @@ public class ProductMgmtApp {
         System.out.println("Printed in JSON Format");
         System.out.println("[");
         for (Product product : products) {
-            System.out.println(product);
+            System.out.println(product + ", ");
         }
         System.out.println("]");
 

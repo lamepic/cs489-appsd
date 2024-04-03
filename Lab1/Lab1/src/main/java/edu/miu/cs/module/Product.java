@@ -84,11 +84,11 @@ public class Product implements Comparable<Object> {
     }
 
     public String printXML(){
-        return "  <product " + "productId="+this.productId + " name="+this.name + " dateSupplied="+this.dateSupplied + " qauntityInStock="+this.quantityStock + " unitPrice="+this.unitPrice + ">";
+        return String.format("\t<product   productId=%d    name=%s    dateSupplied=%s     quantityInStock=%d   unitPrice=%.2f    product/>", this.productId, this.name, this.dateSupplied, this.quantityStock, this.unitPrice);
     }
 
     public String printCSV(){
-        return this.productId + ", " + this.name + ", " + this.dateSupplied + ", " + this.quantityStock + ", " + this.unitPrice;
+        return String.format("productId=%d, name=%s, dateSupplied=%s, quantityInStock=%d, unitPrice=%.2f, product/>", this.productId, this.name, this.dateSupplied, this.quantityStock, this.unitPrice);
     }
 
 
