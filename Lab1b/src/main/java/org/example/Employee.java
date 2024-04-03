@@ -10,18 +10,20 @@ public class Employee {
     private double yearlySalary;
     private PensionPlan pensionPlan;
 
-    public Employee(long employeeId, String firstName, String lastName, LocalDate employmentDate, double yearlySalary){
-        this(employeeId, firstName, lastName, employmentDate, yearlySalary, null);
-    }
-
-    public Employee(long employeeId, String firstName, String lastName, LocalDate employmentDate, double yearlySalary, PensionPlan pensionPlan) {
+    public Employee(long employeeId, String firstName, String lastName, LocalDate employmentDate, double yearlySalary, String planReferenceNumber, LocalDate enrollmentDate, Double monthlyContributions) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.employmentDate = employmentDate;
         this.yearlySalary = yearlySalary;
-        this.pensionPlan = pensionPlan;
+        this.pensionPlan = planReferenceNumber == null ? null : new PensionPlan(planReferenceNumber, enrollmentDate, monthlyContributions);
     }
+
+    public Employee(long employeeId, String firstName, String lastName, LocalDate employmentDate, double yearlySalary){
+        this(employeeId, firstName, lastName, employmentDate, yearlySalary, null, null, null);
+    }
+
+    public Employee(){}
 
     public PensionPlan getPensionPlan() {
         return pensionPlan;
@@ -71,8 +73,15 @@ public class Employee {
         this.yearlySalary = yearlySalary;
     }
 
+    public boolean isUpcomingEnrollee(){
+        if(this.getPensionPlan() != null) return false;
+        var now = LocalDate.now().plusMonths(1);
+        var employeeDate = this.getEmploymentDate().plusYears(5);
+        return now.getMonth() == employeeDate.getMonth();
+    }
+
     public String toJson(){
         var pension = this.getPensionPlan() == null ? null : this.getPensionPlan().toJson();
-        return String.format("{ \"employeeId\":%s, \"firstName\":%s, \"lastName\":%s, \"employmentDate\":%s, \"yearlySalary\":%f, \"pensionPlan\":%s }", this.employeeId, this.firstName, this.lastName, this.employmentDate, this.yearlySalary, pension);
+        return String.format("\t{\n\t \"employeeId\":%s,\n\t \"firstName\":%s,\n\t \"lastName\":%s,\n\t \"employmentDate\":%s,\n\t \"yearlySalary\":%f,\n\t \"pensionPlan\":%s \n\t},", this.employeeId, this.firstName, this.lastName, this.employmentDate, this.yearlySalary, pension);
     }
 }

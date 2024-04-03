@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class PensionPlan {
     private String planReferenceNumber;
     private LocalDate enrollmentDate;
-    private double monthlyContributions;
+    private Double monthlyContributions;
 
     public PensionPlan(String planReferenceNumber, LocalDate enrollmentDate, double monthlyContributions) {
         this.planReferenceNumber = planReferenceNumber;
@@ -38,6 +38,6 @@ public class PensionPlan {
     }
 
     public String toJson(){
-        return String.format("{ \"planReferenceNumber\":%s, \"enrollmentDate\":%s, \"monthlyContributions\":%.2f }", this.planReferenceNumber, this.enrollmentDate, this.monthlyContributions);
+        return String.format("\t{\n\t\t \"planReferenceNumber\":%s,\n\t\t \"enrollmentDate\":%s,\n\t\t \"monthlyContributions\":%.2f \n\t\t}", this.planReferenceNumber, this.enrollmentDate, this.monthlyContributions);
     }
 }
