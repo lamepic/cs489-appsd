@@ -88,7 +88,7 @@ public class Product implements Comparable<Object> {
     }
 
     public String printCSV(){
-        return String.format("productId=%d, name=%s, dateSupplied=%s, quantityInStock=%d, unitPrice=%.2f, product/>", this.productId, this.name, this.dateSupplied, this.quantityStock, this.unitPrice);
+        return String.format("%d, %s, %s, %d, %.2f", this.productId, this.name, this.dateSupplied, this.quantityStock, this.unitPrice);
     }
 
 
